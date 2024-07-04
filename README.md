@@ -54,14 +54,14 @@ Open index.html in your web browser.
 **Explore different movies and enjoy discovering new films!**
 
 ## Contributing
-## Contributions are welcome! If you have any suggestions, improvements, or issues, please create a pull request or report an issue on the GitHub repository.
+Contributions are welcome! If you have any suggestions, improvements, or issues, please create a pull request or report an issue on the GitHub repository.
 
 ## License
 This project is licensed under the MIT License.
 
 ## Author
-Philip Owusu Koranteng  |  Github: (#https://github.com/Piipip)
+Philip Owusu Koranteng  |  Github: (https://github.com/Piipip)
 
 ## Acknowledgements
-**(#https://www.alxafrica.com/)ALX School and Students**
+**(https://www.alxafrica.com/) ALX School and Students**
 
