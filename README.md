@@ -2,7 +2,7 @@
 
 Welcome to the CineScout project! This project allows users to search for their favorite movies and get detailed information about them, including genre, cast, plot, and more.
 
-![Project Demo] ![alt text](Landing_page.png)
+![Project Demo](Landing_page.png)
 
 ## Table of Contents
 
@@ -60,9 +60,8 @@ Open index.html in your web browser.
 This project is licensed under the MIT License.
 
 ## Author
-Philip Owusu Koranteng
-Github: <https://github.com/Piipip>
+Philip Owusu Koranteng  |  Github: (#https://github.com/Piipip)
 
 ## Acknowledgements
-**<https://www.alxafrica.com/>ALX School and Students**
+**(#https://www.alxafrica.com/)ALX School and Students**
 
