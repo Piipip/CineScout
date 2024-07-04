@@ -13,6 +13,8 @@ Welcome to the CineScout project! This project allows users to search for their 
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
+- [Author](#author)
+- [Acknowledgements](#acknowledgements)
 
 ## Introduction
 
@@ -37,11 +39,11 @@ To run this project locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/movie-search-website.git
+   git clone https://github.com/Piipip/CineScout.git
 
 2. Navigate to the project directory:
-```bash
 Copy code
+```bash
 cd CineScout
 ```
 Open index.html in your web browser.
@@ -57,4 +59,10 @@ Open index.html in your web browser.
 ## License
 This project is licensed under the MIT License.
 
+## Author
+Philip Owusu Koranteng
+Github: <https://github.com/Piipip>
+
+## Acknowledgements
+**<https://www.alxafrica.com/>ALX School and Students**
 
