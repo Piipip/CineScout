@@ -2,7 +2,7 @@
 
 Welcome to the CineScout project! This project allows users to search for their favorite movies and get detailed information about them, including genre, cast, plot, and more.
 
-![Project Demo](demo.png)
+![Project Demo] ![alt text](Landing_page.png)
 
 ## Table of Contents
 
