@@ -1,92 +1,105 @@
-const apiKey = '9da4379f04dd8554435bc544bb6db134'; // Replace with your actual TMDB API key
+const movieSearchBox = document.getElementById('movie-search-box');
+const searchList = document.getElementById('search-list');
+const resultGrid = document.getElementById('result-grid');
 
-const searchBtn = document.getElementById('search-btn');
-const movieList = document.getElementById('movie');
-const movieDetailsContent = document.querySelector('.movie-details-content');
-const movieCloseBtn = document.getElementById('movie-close-btn');
+// Debounce function to limit the rate at which a function is executed
+function debounce(func, delay) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), delay);
+    };
+}
 
-// Event listeners
-searchBtn.addEventListener('click', getMovieList);
-movieList.addEventListener('click', function(e) {
-    if (e.target.classList.contains('movie-btn')) {
-        e.preventDefault();
-        let movieItem = e.target.parentElement.parentElement;
-        getMovieDetails(movieItem.dataset.id);
-    }
-});
-
-movieCloseBtn.addEventListener('click', () => {
-    movieDetailsContent.parentElement.classList.remove('showRecipe');
-});
-
-// Function to fetch movie list based on search input
-function getMovieList() {
-    let searchInputTxt = document.getElementById('search-input').value.trim();
-    fetch(`https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${searchInputTxt}`)
-    .then(response => response.json())
-    .then(data => {
-        let html = "";
-        if (data.results && data.results.length > 0) {
-            data.results.forEach(movie => {
-                html += `
-                    <div class="movie-item" data-id="${movie.id}">
-                        <div class="movie-img">
-                            <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}">
-                        </div>
-                        <div class="movie-name">
-                            <h3>${movie.title}</h3>
-                            <a href="#" class="movie-btn">Get Details</a>
-                        </div>
-                    </div>
-                `;
-            });
-            movieList.classList.remove('notFound');
+// Load movies from API
+async function loadMovies(searchTerm) {
+    const URL = `https://omdbapi.com/?s=${searchTerm}&page=1&apikey=fc1fef96`;
+    try {
+        const res = await fetch(URL);
+        const data = await res.json();
+        if (data.Response === "True") {
+            displayMovieList(data.Search);
         } else {
-            html = "Sorry, we didn't find any movies!";
-            movieList.classList.add('notFound');
+            searchList.innerHTML = `<p class="no-results">${data.Error}</p>`;
         }
-
-        movieList.innerHTML = html;
-    })
-    .catch(error => {
-        console.error('Error fetching movie list:', error);
-        // Handle error gracefully, e.g., display an error message to the user
-    });
+    } catch (error) {
+        searchList.innerHTML = `<p class="error-message">An error occurred while fetching data. Please try again later.</p>`;
+    }
 }
 
-// Function to fetch and display movie details
-function getMovieDetails(id) {
-    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=$9da4379f04dd8554435bc544bb6db134&append_to_response=credits,videos`)
-    .then(response => response.json())
-    .then(data => displayMovieDetails(data))
-    .catch(error => {
-        console.error('Error fetching movie details:', error);
-        // Handle error gracefully, e.g., display an error message to the user
-    });
+function findMovies() {
+    const searchTerm = movieSearchBox.value.trim();
+    if (searchTerm.length > 0) {
+        searchList.classList.remove('hide-search-list');
+        loadMovies(searchTerm);
+    } else {
+        searchList.classList.add('hide-search-list');
+    }
 }
 
-// Function to display movie details in a modal-like view
-function displayMovieDetails(movie) {
-    let html = `
-        <h2 class="movie-title">${movie.title}</h2>
-        <p class="movie-genre">${movie.genres.map(genre => genre.name).join(', ')}</p>
-        <div class="movie-deets">
-            <h3>Overview:</h3>
-            <p>${movie.overview}</p>
-        </div>
-        <div class="movie-img">
-            <img src="https://image.tmdb.org/t/p/w500/${movie.poster_path}" alt="${movie.title}">
-        </div>
-    `;
-
-    if (movie.videos.results.length > 0) {
-        html += `
-            <div class="movie-link">
-                <a href="https://www.youtube.com/watch?v=${movie.videos.results[0].key}" target="_blank">Watch Trailer</a>
+function displayMovieList(movies) {
+    searchList.innerHTML = movies.map(movie => {
+        const moviePoster = (movie.Poster !== "N/A") ? movie.Poster : "image_not_found.png";
+        return `
+            <div class="search-list-item" data-id="${movie.imdbID}">
+                <div class="search-item-thumbnail">
+                    <img src="${moviePoster}" alt="${movie.Title}">
+                </div>
+                <div class="search-item-info">
+                    <h3>${movie.Title}</h3>
+                    <p>${movie.Year}</p>
+                </div>
             </div>
         `;
-    }
-
-    movieDetailsContent.innerHTML = html;
-    movieDetailsContent.parentElement.classList.add('showMovie');
+    }).join('');
+    addMovieDetailsEvent();
 }
+
+function addMovieDetailsEvent() {
+    const searchListMovies = searchList.querySelectorAll('.search-list-item');
+    searchListMovies.forEach(movie => {
+        movie.addEventListener('click', async () => {
+            searchList.classList.add('hide-search-list');
+            movieSearchBox.value = "";
+            try {
+                const result = await fetch(`https://www.omdbapi.com/?i=${movie.dataset.id}&apikey=fc1fef96`);
+                const movieDetails = await result.json();
+                displayMovieDetails(movieDetails);
+            } catch (error) {
+                resultGrid.innerHTML = `<p class="error-message">An error occurred while fetching movie details. Please try again later.</p>`;
+            }
+        });
+    });
+}
+
+function displayMovieDetails(details) {
+    resultGrid.innerHTML = `
+        <div class="movie-poster">
+            <img src="${(details.Poster !== "N/A") ? details.Poster : "image_not_found.png"}" alt="movie poster">
+        </div>
+        <div class="movie-info">
+            <h3 class="movie-title">${details.Title}</h3>
+            <ul class="movie-misc-info">
+                <li class="year">Year: ${details.Year}</li>
+                <li class="rated">Ratings: ${details.Rated}</li>
+                <li class="released">Released: ${details.Released}</li>
+            </ul>
+            <p class="genre"><b>Genre:</b> ${details.Genre}</p>
+            <p class="writer"><b>Writer:</b> ${details.Writer}</p>
+            <p class="actors"><b>Actors:</b> ${details.Actors}</p>
+            <p class="plot"><b>Plot:</b> ${details.Plot}</p>
+            <p class="language"><b>Language:</b> ${details.Language}</p>
+            <p class="awards"><b><i class="fas fa-award"></i></b> ${details.Awards}</p>
+        </div>
+    `;
+}
+
+// Debounce the findMovies function to limit API calls
+movieSearchBox.addEventListener('input', debounce(findMovies, 500));
+
+// Hide search list when clicking outside
+window.addEventListener('click', (event) => {
+    if (event.target !== movieSearchBox) {
+        searchList.classList.add('hide-search-list');
+    }
+});
