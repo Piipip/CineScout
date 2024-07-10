@@ -19,7 +19,7 @@ Welcome to the CineScout project! This project allows users to search for their 
 
 CineScout is a web application designed to provide users with an intuitive way to explore movies. It utilizes the OMDB API to fetch movie data based on user input. Users can search for movies by title and view detailed information such as release year, ratings, actors, plot summary, and more.
 
-[Deployed Site](#) | [Final Project Blog Article](#) | [Author's LinkedIn](https://www.linkedin.com/in/philip-owusu-koranteng/)
+[Deployed Site](https://piipip.github.io/CineScout/) | [Final Project Blog Article](https://medium.com/@06koranteng/cinescout-your-ultimate-movie-explorer-dd00e17c1677) | [Author's LinkedIn](https://www.linkedin.com/in/philip-owusu-koranteng-912a58236/)
 
 ## Installation
 
