@@ -1,21 +1,24 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+/* Root variables for color scheme */
 :root {
-    --primary-color: #4A90E2;
-    --secondary-color: #F0F8FF;
-    --accent-color: #FFD700;
-    --text-color: #333333;
-    --background-color: #FFFFFF;
-    --dark-color: #2C3E50;
+    --primary-color: #4A90E2;       /* Main primary color */
+    --secondary-color: #F0F8FF;     /* Secondary background color */
+    --accent-color: #FFD700;        /* Accent color (gold) */
+    --text-color: #333333;          /* Main text color */
+    --background-color: #FFFFFF;    /* Background color */
+    --dark-color: #2C3E50;          /* Dark background color */
 }
 
+/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body styles */
 body {
     font-family: 'Montserrat', sans-serif;
     color: var(--text-color);
@@ -23,12 +26,14 @@ body {
     line-height: 1.6;
 }
 
+/* Container styles */
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
+/* Header styles */
 header {
     background-color: var(--primary-color);
     padding: 1rem 0;
@@ -47,11 +52,11 @@ header .container {
 .logo p {
     font-size: 1.8rem;
     font-weight: 700;
-    color: var(--background-color);
+    color: var(--background-color); /* Logo text color */
 }
 
 .logo span {
-    color: var(--accent-color);
+    color: var(--accent-color); /* Accent color for logo */
 }
 
 nav ul {
@@ -75,6 +80,7 @@ nav ul li a:hover {
     color: var(--accent-color);
 }
 
+/* Hero section styles */
 .hero {
     background: linear-gradient(rgba(74, 144, 226, 0.7), rgba(74, 144, 226, 0.7)), url('movie-background.jpg') no-repeat center center/cover;
     height: 60vh;
@@ -96,6 +102,7 @@ nav ul li a:hover {
     margin: 0 auto;
 }
 
+/* Search container styles */
 .search-container {
     background-color: var(--secondary-color);
     padding: 4rem 0;
@@ -144,6 +151,7 @@ nav ul li a:hover {
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
+/* Result container styles */
 .result-container {
     padding: 4rem 0;
 }
@@ -181,6 +189,7 @@ nav ul li a:hover {
     color: var(--dark-color);
 }
 
+/* About section styles */
 .about {
     background-color: var(--dark-color);
     color: var(--background-color);
@@ -198,6 +207,7 @@ nav ul li a:hover {
     margin: 0 auto;
 }
 
+/* Footer styles */
 footer {
     background-color: var(--primary-color);
     color: var(--background-color);
@@ -222,6 +232,7 @@ footer .container {
     color: var(--accent-color);
 }
 
+/* Media query for smaller screens */
 @media (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;

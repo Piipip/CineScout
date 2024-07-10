@@ -1,6 +1,7 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
+/* Root variables for color scheme */
 :root {
     --primary-color: #4a90e2;
     --secondary-color: #f0f8ff;
@@ -10,12 +11,14 @@
     --background-color: #1a2533;
 }
 
+/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Body styles */
 body {
     font-family: 'Montserrat', sans-serif;
     color: var(--text-color);
@@ -23,6 +26,7 @@ body {
     line-height: 1.6;
 }
 
+/* Header styles */
 header {
     background-color: var(--dark-color);
     padding: 1rem 2rem;
@@ -64,6 +68,7 @@ header nav ul li a:hover {
     color: var(--primary-color);
 }
 
+/* Intro section styles */
 .intro-section {
     height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('app.jpg') no-repeat center center/cover;
@@ -87,6 +92,7 @@ header nav ul li a:hover {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
+/* Button styles */
 .btn {
     background-color: var(--primary-color);
     color: var(--text-color);
@@ -106,6 +112,7 @@ header nav ul li a:hover {
     transform: translateY(-3px);
 }
 
+/* Features section styles */
 .features-section {
     padding: 6rem 2rem;
     text-align: center;
@@ -153,6 +160,7 @@ header nav ul li a:hover {
     font-size: 1rem;
 }
 
+/* About section styles */
 .about-section {
     padding: 6rem 2rem;
     text-align: center;
@@ -188,6 +196,7 @@ header nav ul li a:hover {
     color: var(--primary-color);
 }
 
+/* Footer styles */
 footer {
     background-color: var(--dark-color);
     text-align: center;
@@ -195,6 +204,7 @@ footer {
     font-size: 0.9rem;
 }
 
+/* Media query for smaller screens */
 @media (max-width: 768px) {
     .intro-content h1 {
         font-size: 2.5rem;

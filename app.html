@@ -13,11 +13,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
                 <p>Cine<span>Scout</span></p>
             </div>
+            <!-- Navigation -->
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
@@ -42,12 +44,14 @@
             <div class="container">
                 <div class="search-element">
                     <h2>Search Movie</h2>
+                    <!-- Search Input and Button -->
                     <div class="search-input">
                         <input type="text" class="form-control" placeholder="Enter movie title..." id="movie-search-box" onkeyup="findMovies()" onclick="findMovies()">
                         <button id="search-btn"><i class="fas fa-search"></i></button>
                     </div>
+                    <!-- Search Results List -->
                     <div class="search-list" id="search-list">
-                        <!-- List here -->
+                        <!-- List items will be dynamically populated -->
                     </div>
                 </div>
             </div>
@@ -57,7 +61,7 @@
         <section class="result-container">
             <div class="container">
                 <div class="result-grid" id="result-grid">
-                    <!-- Movie information here -->
+                    <!-- Movie details will be dynamically displayed here -->
                 </div>
             </div>
         </section>
@@ -66,14 +70,16 @@
         <section id="about" class="about">
             <div class="container">
                 <h2>About CineScout</h2>
-                <p>CineScout is your personal movie discovery assistant. We solve the challenge of enabling users to easily discover and explore detailed information about their favorite movies</p>
+                <p>CineScout is your personal movie discovery assistant. We solve the challenge of enabling users to easily discover and explore detailed information about their favorite movies.</p>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2024 CineScout. All rights reserved.</p>
+            <!-- Social Links -->
             <div class="social-links">
                 <a href="https://github.com/Piipip" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://x.com/philipkorans" target="_blank"><i class="fab fa-twitter"></i></a>
